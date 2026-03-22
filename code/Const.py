@@ -6,6 +6,12 @@ COLOR_WHITE = (255, 255, 255)
 COLOR_YELLOW = (255, 255, 0)
 
 #E
+ENTITY_SHOT_DELAY = {
+    'Player1': 30,
+    'Player2': 30,
+    'Enemy1': 100,
+    'Enemy2': 200,
+}
 EVENT_ENEMY = pygame.USEREVENT + 1
 ENTITY_SPEED = {
     'Level1Bg0': 0,
@@ -13,6 +19,8 @@ ENTITY_SPEED = {
     'Level1Bg2': 2,
     'Level1Bg3': 3,
     'Level1Bg4': 4,
+    'Level1Bg5': 5,
+    'Level1Bg6': 6,
     'Level2Bg0': 0,
     'Level2Bg1': 1,
     'Level2Bg2': 2,
@@ -21,10 +29,10 @@ ENTITY_SPEED = {
     'Player1': 3,
     'Player1Shot': 1,
     'Player2': 3,
-    'Player2Shot': 3,
+    'Player2Shot': 2,
     'Enemy1': 1,
-    'Enemy1Shot': 5,
-    'Enemy2': 2,
+    'Enemy1Shot': 3,
+    'Enemy2': 1,
     'Enemy2Shot': 2,
 }
 ENTITY_HEALTH = {
@@ -70,7 +78,7 @@ PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
                     'Player2': pygame.K_LCTRL}
 
 # S
-SPAWN_TIME = 3600
+SPAWN_TIME = 2000
 
 #W
 WIN_WIDTH =669
