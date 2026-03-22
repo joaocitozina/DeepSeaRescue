@@ -4,7 +4,7 @@ import pygame
 from pygame.rect import Rect
 from pygame.surface import Surface
 
-from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE
+from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE, COLOR_YELLOW
 
 
 class Menu:
@@ -14,15 +14,20 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
 
 
-    def run(self):
-
+    def run(self,):
+        menu_option = 0
         pygame.mixer.music.load('./asset/musica_de_fundo.mp3')
         pygame.mixer.music.play(-1)
         while True:
+            #DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
 
             for i in range(len(MENU_OPTION)):
-                self.menu_text(30, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 500 + 45 * i))
+                if i == menu_option:
+                    self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW, ((WIN_WIDTH / 2), 200 + 25 * i))
+
+                else:
+                    self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2),  200 + 25 * i))
 
             pygame.display.flip()
 
@@ -31,6 +36,23 @@ class Menu:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit() #End pyg
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_DOWN:             # TECLA PARA BAIXO
+                        if menu_option < len(MENU_OPTION) -1:
+                            menu_option += 1
+                        else:
+                            menu_option = 0
+                    if event.key == pygame.K_UP:                   # TECLA PARA CIMA
+                        if menu_option > 0:
+                            menu_option -= 1
+                        else:
+                            menu_option = len(MENU_OPTION) -1
+                    if event.key == pygame.K_RETURN:               # Enter
+                        return MENU_OPTION[menu_option]
+
+
+
+
 
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
